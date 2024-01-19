@@ -1,8 +1,7 @@
 import express from 'express';
-
 import cors from 'cors';
 import morgan from 'morgan';
-import indexRouter from './hello/hello.controller'
+import homeRouter from './home/home.route'
 import { notFound } from './middlewares';
 
 const app = express()
@@ -13,8 +12,8 @@ app.use(morgan('dev'))
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.use('/', indexRouter)
-
+app.use('/', homeRouter)
+console.log(process.env.NODE_ENV)
 app.use(notFound)
 
 
